@@ -34,7 +34,8 @@ while True:
         name = input("Enter student name to check result: ")
         if name in student:
             marks = student[name]
-            """"
-            aaaa : 44
-            aaaa
-            """
+            if marks >= 40:
+                 print("Congratulations! You have passed the exam.")
+            else:
+                    print("Sorry! You have failed the exam.")
+                    
