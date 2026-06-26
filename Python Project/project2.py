@@ -27,7 +27,7 @@ actions ={
 places_or_things ={
     "at Red Fort",
     "Karachi local market",
-    "a palat of shalgham",
+    "a plate of shalgham",
     "inside a parliamant",
     "at qabristan",
     "during a cricket match",
@@ -38,8 +38,9 @@ while True:
     subject = random . choice(subjects)
     action = random . choice(actions)
     place_or_thing = random . choice(places_or_things)
-    headline = f" BREAKING NEWS : {subject} {action} {place_or_thing}"
-    print ("\n =headline ")
+
+    headline = f" BREAKING NEWS:{subject} {action} {place_or_thing}"
+    print ("\n" + headline )
     user_input = input ("\n do ypu want to anpther headline  ? (yes/no) ").strip()
     if user_input=="no":
         break
