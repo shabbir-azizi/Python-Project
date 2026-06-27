@@ -14,7 +14,7 @@ while True:
 
     if choice == "1":
         name = input("Enter student name: ")
-        marks = marks = (input("Enter student marks: "))
+        marks = int = (input("Enter student marks: "))
         student[name] = marks
 
         print(f"Student {name} added successfully!")
@@ -39,3 +39,17 @@ while True:
             else:
                     print("Sorry! You have failed the exam.")
                     
+
+        else:
+            print("Student not found.")
+
+
+            # exit
+
+    elif choice == "4":
+         print("Exiting the program. Goodbye!")
+        
+
+    break
+else:
+     print("Invalid choice. Please try again.")
