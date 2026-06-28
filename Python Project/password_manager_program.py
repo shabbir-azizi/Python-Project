@@ -46,3 +46,12 @@ while True:
                     print(site, ":", pwd)
 
     elif choice == "3":
+        print("Generated Password:", generate_password())
+   
+    elif choice == "4":
+        print("okay bye bye")
+        break
+
+    else:
+        print("Invalid choice. Please try again.")
+        
