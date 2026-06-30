@@ -1,9 +1,9 @@
-from Flask import Flask
+from Flask import Flask 
 
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/')                                                
 
 def home():
     return "App is runing"
@@ -11,4 +11,4 @@ def home():
 
 if __name__ == '__main__':
     app.run(debug=True)
-    
+                                
