@@ -41,7 +41,16 @@
         {% endfor %}
     </ul>
 
-</div>
+    <h3>Interivew questions list </h3>
+     <ul>
+        {% for s in result.get("interview_questions", []) %}
+        <li>{{ s }}</li>
+        {% endfor %}
+    </ul>
 
+
+
+</div>
+{% endif %}
 
 {% endblock %}
