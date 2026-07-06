@@ -13,12 +13,24 @@ app.secret_key="secret123"
 base.metadata.create_all(bind=engine)
 
 
-@app.route('/')                                                
+@app.route("/")                                                
 
 def home():
-    return "App is runing"
+    if "user" in session :
+        return redirect ("/dashboard")
+    
+    return redirect("/login")
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+#----SIGNUP
+frist-project-Ai-resum.route("/signup", methods=["GET", "POST"])
+def signup():
+        db = sessionlocal()
+
+        
+        
+        
+        
+        if __name__ == '__main__':
+             app.run(debug=True)
                                 
