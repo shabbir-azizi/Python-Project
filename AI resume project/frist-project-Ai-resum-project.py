@@ -36,7 +36,14 @@ def signup():
                 return "User already exists"
             user = models.User (email=email, password=password)
             db.add(user)
+            db.commit()
+
+            return redirect("/login")
         
+        return render_template("signup.html")
+
+
+
         
         if __name__ == '__main__':
              app.run(debug=True)
