@@ -27,8 +27,15 @@ frist-project-Ai-resum.route("/signup", methods=["GET", "POST"])
 def signup():
         db = sessionlocal()
 
-        
-        
+        if request.method == "POST":
+            email = request.form.get("email")
+            password = request.form.get("password")
+
+            existing_user = db.query(models.User).filter_by(email=email).first()
+            if existing_user:
+                return "User already exists"
+            user = models.User (email=email, password=password)
+            db.add(user)
         
         
         if __name__ == '__main__':
