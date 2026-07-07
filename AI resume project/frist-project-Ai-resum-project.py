@@ -75,8 +75,20 @@ def dashboard():
     resume_data = None
     if request.method == "POST":
         user_goal = request.form.get("role")
-        
-        
+        resume_text = request.form.get("resume")
+
+
+        file = request.files.get("file")
+
+        #file handling
+        if file and file.name !="":
+            if file .filename.endswith(".pdf"):
+                # try:
+                    pdf_reader = PyPDF2.PdfReader(file)
+                    text =""
+                    for page in pdf_reader.pages:
+                        text += page.extract_text() or ""
+
     
 
 
