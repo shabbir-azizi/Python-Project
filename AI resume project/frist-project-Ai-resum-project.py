@@ -43,8 +43,27 @@ def signup():
         return render_template("signup.html")
 
 
+# login
 
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    db = sessionlocal()
+    
+    
+    if request.method == "POST":
+        email = request.form.get("email")
+        password = request.form.get("password")
+
+        user = db.query(models.User).filter_by(email=email, password=password).first()
+        if user:
+            session["user"] = user.email
+            return redirect("/dashboard")
+        else:
+
+         return "Invalid credentials"
         
-        if __name__ == '__main__':
-             app.run(debug=True)
-                                
+
+    return render_template("login.html")
+
+if __name__ == '__main__':
+    app.run(debug=True)
