@@ -65,5 +65,21 @@ def login():
 
     return render_template("login.html")
 
+
+# dashboard
+@app.route("/dashboard" , methods=["GET", "POST"])
+def dashboard():
+    if "user" not in session:
+        return redirect("/login")
+    
+    resume_data = None
+    if request.method == "POST":
+        user_goal = request.form.get("role")
+        
+        
+    
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)
