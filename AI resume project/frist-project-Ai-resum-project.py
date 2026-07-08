@@ -83,12 +83,24 @@ def dashboard():
         #file handling
         if file and file.name !="":
             if file .filename.endswith(".pdf"):
-                # try:
+                try:
                     pdf_reader = PyPDF2.PdfReader(file)
                     text =""
                     for page in pdf_reader.pages:
                         text += page.extract_text() or ""
-
+                    resume_text = text
+                except Exception as e:
+                    result = {"error": f"PDF error: {str(e)}"}
+            elif  file.filename.endwith(".docx"):
+                try:
+                    doc = docx.Document(file)
+                    text = ""
+                    for para in doc.paragraphs:
+                        text += para.text + "\n"
+                    resume_text = text
+                except Exception as e:
+                    result = {"error": f"DOCX error: {str(e)}"}
+                    
     
 
 
