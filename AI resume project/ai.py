@@ -24,9 +24,22 @@ Return only JSON:
 {{
 "skills":[],
 "missing_skills":[],
-roadmap":[],
+"roadmap":[],
+"Interview_Questions":[]
+
+
+
 
 }}
 
+resume:
+{resume_text}
 
 """
+    
+    try:
+        response = client.chat.completions.create(
+            model = "gpt-4.1-mini",
+            temperature = 0.3,
+            
+        )
