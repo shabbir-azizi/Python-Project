@@ -41,5 +41,24 @@ resume:
         response = client.chat.completions.create(
             model = "gpt-4.1-mini",
             temperature = 0.3,
-            
+            messages = [
+                {"role": "system", "content": "You are a professional software engineer and hiring manager."},
+                {"role": "user", "content": prompt}
+            ]
         )
+
+
+        content = response.choices[0].message.content.strip()
+
+        start = content.find("{")
+        end = content.rfind("}") + 1
+
+        return  json.loads(content[start:end])
+    except Exception as e:
+        return {
+                "skills": [], 
+                "missing_skills": [],
+                "roadmap": [],
+                "Interview_Questions": [],
+                "error": str(e)
+        }
