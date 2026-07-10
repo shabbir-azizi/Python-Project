@@ -102,8 +102,24 @@ def dashboard():
                     result = {"error": f"DOCX error: {str(e)}"}
                              
     if resume_text and user_goal:
-        # try:
+        try:
             result= analyze_resume(resume_text, user_goal)
+
+
+            # save to db
+            db = sessionlocal()
+            user = db.query(models.User).filter_by(email=session["user"]).first()
+            report = models.Report(
+                user_id=user.id,
+                resume_text=resume_text,
+                user_goal=user_goal,
+                result=json.dumps(result)
+            )
+
+            db.add(report)
+            db.commit()
+        except Ecsception as e:
+            
 
 
 
