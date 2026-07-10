@@ -118,7 +118,21 @@ def dashboard():
 
             db.add(report)
             db.commit()
-        except Ecsception as e:
+        except Exception as e:
+            result = {"error": f"AI error: {str(e)}"}
+
+    
+
+    return render_template(
+        "dashboard.html",
+        user=session["user"],
+        result=result
+    )
+
+# history
+
+                           
+
             
 
 
