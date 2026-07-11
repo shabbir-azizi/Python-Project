@@ -46,6 +46,8 @@ def signup():
 # login
 
 @app.route("/login", methods=["GET", "POST"])
+
+
 def login():
     db = sessionlocal()
     
@@ -66,8 +68,12 @@ def login():
     return render_template("login.html")
 
 
-# dashboard
+# DASHBOARD
+
 @app.route("/dashboard" , methods=["GET", "POST"])
+
+
+
 def dashboard():
     if "user" not in session:
         return redirect("/login")
@@ -130,7 +136,9 @@ def dashboard():
     )
 
 # history
-@app.route("/history")
+@app.route("/history")  
+
+
 def history():
     if "user" not in session:
         return redirect("/login")
@@ -155,6 +163,15 @@ def history():
             "result": parsed_result,
         })
             
+    return render_template("history.html", reports=parsed_reports)
+
+
+#Logout route
+
+@app.route("/logout")
+def logout():
+    session.pop("user,None")
+    return redirect("/login")
 
 
 
