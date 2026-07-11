@@ -143,10 +143,20 @@ def history():
 
     # convert Json string dict
 
-    pasred-report =[]
-    for r in report:
+    parsed_reports =[]
+    for r in reports:
         try:
             parsed_result = json.loads(r.result)
+        except:
+            parsed_result = []
+            
+        parsed_reports.append({
+            "resume": r.resume_text,
+            "result": parsed_result,
+        })
+            
+
+
 
 
 
