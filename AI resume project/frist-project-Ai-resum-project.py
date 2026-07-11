@@ -130,10 +130,23 @@ def dashboard():
     )
 
 # history
+@app.route("/history")
+def history():
+    if "user" not in session:
+        return redirect("/login")
+    
+    db = sessionlocal()
 
-                           
+    user = db.query(models.User).filter_by(email=session["user"]).first()
 
-            
+    reports = db.query(models.Report).filter_by(user_id=user.id).all()
+
+    # convert Json string dict
+
+    pasred-report =[]
+    for r in report:
+        try:
+            parsed_result = json.loads(r.result)
 
 
 
