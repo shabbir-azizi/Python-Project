@@ -54,7 +54,7 @@ resume:
         end = content.rfind("}") + 1
 
         return  json.loads(content[start:end])
-    except Exception as e:
+    except Exception as e:  
         return {
                 "skills": [], 
                 "missing_skills": [],
