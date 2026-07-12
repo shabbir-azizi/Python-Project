@@ -5,4 +5,17 @@ background #f5f7fb;
 color: #1a1a1a;
 }
 
+.auth-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px
 
+
+}
+
+.auth-card{
+    width: 400px;
+    background: white
+
+}
