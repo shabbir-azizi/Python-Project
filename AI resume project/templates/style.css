@@ -40,4 +40,28 @@ body {
     border-radius: 8px;
     border: 1px solid #ddd;
     font-size: 14px;
+    transition: 0.2s;
+
+}
+
+.auth-card input: focus{
+    border-color: #2563eb;
+    outline: none;
+
+}
+
+.auth-card button {
+width: 100%;
+margin-top: 18px;
+padding : 12px;
+background: #111827;
+border-radius: 8px;
+font-weight: 500;
+
+
+}
+.auth-card button:hover{
+    background: #2563eb;
+    
+
 }
