@@ -194,3 +194,15 @@ button:hover{
 UL{
     padding-left: 18px;
 }
+
+li{
+    margin-bottom: 6px;
+
+}
+footer {
+    margin-top: 60px;
+    padding: 20px;
+    text-align: center;
+    background: #e5e7eb;
+    font-size: 14px;
+}
