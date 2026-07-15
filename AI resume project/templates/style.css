@@ -170,5 +170,27 @@ input[name="role "]{
     padding: 12px;
     border-radius: 8px;
     border: 1px solid #ddd;
-    
+
+}
+button{
+margin-top: 15px;
+padding: 12px;
+background: #111827;
+color: white;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+font-size: 14px;
+transition: 0,2s;
+
+
+}
+
+button:hover{
+    background: #2563eb;
+
+}
+
+UL{
+    padding-left: 18px;
 }
