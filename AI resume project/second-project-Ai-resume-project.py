@@ -1,20 +1,20 @@
-from sqlalchemy import column, Integer, String,Text,ForeignKey
-from db import base
-class User(base):
+from sqlalchemy import Column, Integer, String, Text, ForeignKey
+from db import Base
+
+
+class User(Base):
     __tablename__ = "users"
-    id = column(Integer, primary_key=True)
-    email = column(String(100), unique=True)
-    password = column(String(100))
+
+    id = Column(Integer, primary_key=True)
+    email = Column(String(100), unique=True, nullable=False)
+    password = Column(String(100), nullable=False)
 
 
+class Report(Base):
+    __tablename__ = "reports"
 
-    class Report (Base):
-        __tablename__ = "reports"
-        id = column(Integer, primary_key=True)
-    user_id = column(Integer, ForeignKey("users.id"))
-    resume_text = column(Text)
-    result = column(Text)
-    
-
-
- 
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey("users.id"))
+    resume_text = Column(Text)
+    user_goal = Column(Text)
+    result = Column(Text)

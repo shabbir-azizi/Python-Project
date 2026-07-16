@@ -1,57 +1,104 @@
 {% extends "base.html" %}
+
 {% block content %}
-<h2>Wealcome ,{{user}}</h2>
+
+<h2>Welcome, {{ user }}</h2>
+
 <div class="card">
-    <h3>Resume Analyser</h3>
+
+    <h3>AI Resume Analyzer</h3>
+
     <form method="POST" enctype="multipart/form-data">
-        <textarea name="resume" placeholder="Paste your resume (optional)"></textarea>
-        <p> Or upload file </p>
-        <input type="file" name="file">
-        <input name="role" placeholder="What do you want to become?(e.g Backend Engineer)" required> >
-        <button type="submit">Analyze</button>
+
+        <label for="resume">Paste Your Resume (Optional)</label>
+        <textarea
+            id="resume"
+            name="resume"
+            rows="10"
+            placeholder="Paste your resume here..."
+        ></textarea>
+
+        <p><strong>OR</strong></p>
+
+        <label for="file">Upload Resume (PDF or DOCX)</label>
+        <input
+            type="file"
+            id="file"
+            name="file"
+            accept=".pdf,.docx"
+        >
+
+        <br><br>
+
+        <label for="role">Career Goal</label>
+        <input
+            type="text"
+            id="role"
+            name="role"
+            placeholder="Example: Backend Engineer"
+            required
+        >
+
+        <br><br>
+
+        <button type="submit">
+            Analyze Resume
+        </button>
+
     </form>
+
 </div>
 
 {% if result %}
-<div class="red">
-    {% if result .error %}
-    <p style="color: red;">{{ result.error }}</p>
-    {%endif%}
-    
-    <h3>Skills</h3>
 
-     <ul>
-        {% for s in result.get("skills", []) %}
-        <li>{{ s }}</li>
+<div class="card">
+
+    {% if result.error %}
+        <p style="color:red;">
+            {{ result.error }}
+        </p>
+    {% else %}
+
+    <h3>Skills</h3>
+    <ul>
+        {% for skill in result.get("skills", []) %}
+            <li>{{ skill }}</li>
+        {% else %}
+            <li>No skills found.</li>
         {% endfor %}
     </ul>
 
     <h3>Missing Skills</h3>
->
-        {% for s in result.get("missing_skills", []) %}
-        <li>{{ s }}</li>
-        {% endfor %}
-    </ul>
-    
-    <h3>roadmap</h3>
-     <ul>
-        {% for s in result.get("roadmap", []) %}
-        <li>{{ s }}</li>
+    <ul>
+        {% for skill in result.get("missing_skills", []) %}
+            <li>{{ skill }}</li>
+        {% else %}
+            <li>No missing skills found.</li>
         {% endfor %}
     </ul>
 
-    <h3>Interivew questions list </h3>
-     <ul>
-        {% for s in result.get("interview_questions", []) %}
-        <li>{{ s }}</li>
+    <h3>Learning Roadmap</h3>
+    <ul>
+        {% for step in result.get("roadmap", []) %}
+            <li>{{ step }}</li>
+        {% else %}
+            <li>No roadmap available.</li>
         {% endfor %}
     </ul>
-    <ul
 
+    <h3>Interview Questions</h3>
+    <ul>
+        {% for question in result.get("interview_questions", []) %}
+            <li>{{ question }}</li>
+        {% else %}
+            <li>No interview questions available.</li>
+        {% endfor %}
+    </ul>
 
+    {% endif %}
 
 </div>
+
 {% endif %}
 
 {% endblock %}
-

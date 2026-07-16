@@ -1,46 +1,71 @@
 {% extends "base.html" %}
+
 {% block content %}
 
-<h2> Your History</h2>
-{% for r in reports %}
+<h2>Your Analysis History</h2>
+
+{% if reports %}
+
+    {% for r in reports %}
+    <div class="card">
+
+        <h3>Career Goal</h3>
+        <p>{{ r.goal }}</p>
+
+        <h3>Resume Preview</h3>
+        <p>{{ r.resume[:300] }}{% if r.resume|length > 300 %}...{% endif %}</p>
+
+        <hr>
+
+        <h3>Skills</h3>
+        <ul>
+            {% for skill in r.result.get("skills", []) %}
+                <li>{{ skill }}</li>
+            {% else %}
+                <li>No skills found.</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Missing Skills</h3>
+        <ul>
+            {% for skill in r.result.get("missing_skills", []) %}
+                <li>{{ skill }}</li>
+            {% else %}
+                <li>No missing skills.</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Learning Roadmap</h3>
+        <ul>
+            {% for step in r.result.get("roadmap", []) %}
+                <li>{{ step }}</li>
+            {% else %}
+                <li>No roadmap available.</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Interview Questions</h3>
+        <ul>
+            {% for question in r.result.get("interview_questions", []) %}
+                <li>{{ question }}</li>
+            {% else %}
+                <li>No interview questions available.</li>
+            {% endfor %}
+        </ul>
+
+    </div>
+
+    <br>
+
+    {% endfor %}
+
+{% else %}
+
 <div class="card">
-    <p> <strong>Resume Preview:</strong></p>
-    <p>{{ r.resume[:150] }}</p>
-
-
-    <hr>
- <h3>Skills</h3>
-
-     <ul>
-        {% for s in result.get("skills", []) %}
-        <li>{{ s }}</li>
-        {% endfor %}
-    </ul>
-
-    <h3>Missing Skills</h3>
->
-        {% for s in result.get("missing_skills", []) %}
-        <li>{{ s }}</li>
-        {% endfor %}
-    </ul>
-    
-    <h3>roadmap</h3>
-     <ul>
-        {% for s in result.get("roadmap", []) %}
-        <li>{{ s }}</li>
-        {% endfor %}
-    </ul>
-
-    <h3>Interivew questions list </h3>
-     <ul>
-        {% for s in result.get("interview_questions", []) %}
-        <li>{{ s }}</li>
-        {% endfor %}
-    </ul>
-    <ul
-
+    <p>No resume analyses found.</p>
+    <p>Go to the Dashboard and analyze your first resume.</p>
 </div>
 
-{% endfor %}
+{% endif %}
 
 {% endblock %}
